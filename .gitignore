@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.env
+.DS_Store
+post.md
+
+landing.html
+MCP-Python-SDK-Documentation.md
+modelcontextprotocol-python-sdk.md
+server-v1.py
+shortcut.swagger.json
