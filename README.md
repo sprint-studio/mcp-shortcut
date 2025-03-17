@@ -29,7 +29,7 @@ The Shortcut Product Manager MCP enables AI assistants like Claude to perform co
 1. Clone the repository or download the source code:
 
    ```bash
-   git clone https://github.com/yourusername/mcp-shortcut.git
+   git clone https://github.com/sprint-studio/mcp-shortcut.git
    cd mcp-shortcut
    ```
 
