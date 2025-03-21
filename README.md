@@ -43,6 +43,10 @@ The Shortcut Product Manager MCP enables AI assistants like Claude to perform co
 
    ```bash
    export SHORTCUT_API_TOKEN=your_api_token_here
+   export SHORTCUT_API_URL=https://api.shortcut.com/api/v3
+
+   // Optional: Set a user agent to identify your application
+   export SHORTCUT_USER_AGENT=sprint-studio/Shortcut-PM-MCP/1.0
    ```
 
    You can find your API token in Shortcut under Settings > API Tokens.

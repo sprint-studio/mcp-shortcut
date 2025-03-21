@@ -426,6 +426,55 @@ def roadmap_planning_prompt() -> str:
     Once we've outlined the roadmap, I'll implement it in Shortcut by creating epics, milestones, and associated stories with appropriate timeline indicators.
     """
 
+@mcp.prompt()
+def market_research_prompt() -> str:
+    """Analyze competitive landscape and market opportunities"""
+    return """
+    I'll help you conduct a thorough market analysis and competitive research. Let's gather information about:
+
+    1. Target Market Understanding:
+       - Who are your primary and secondary target users/customers?
+       - What are their key pain points and needs?
+       - What market segments are you focusing on?
+
+    2. Competitive Analysis:
+       - Who are your direct competitors?
+       - Who are your indirect competitors?
+       - For each competitor, what are their:
+         * Key features and differentiators
+         * Strengths and weaknesses
+         * Pricing strategies
+         * Target audience
+         * Market positioning
+
+    3. Market Opportunities:
+       - What are the unmet needs in the market?
+       - What trends are emerging in your industry?
+       - What technological advances could impact your product?
+       - What regulatory changes might affect the market?
+
+    4. Competitive Advantage:
+       - What unique value proposition can you offer?
+       - What features or capabilities set you apart?
+       - What barriers to entry exist in your market?
+       - How sustainable is your competitive advantage?
+
+    Based on this analysis, I can help you:
+    - Create epics for key opportunity areas
+    - Define stories for competitive feature development
+    - Set up tracking labels for competitor-related items
+    - Prioritize features based on competitive positioning
+    - Document market insights in story descriptions
+    - Create a competitive monitoring framework
+    - Plan regular competitive analysis updates
+
+    I'll help organize this information in Shortcut by creating:
+    - An epic for market research findings
+    - Stories for each competitor analysis
+    - Labels for tracking competitive features
+    - Milestones for market opportunity initiatives
+    """
+
 if __name__ == "__main__":
     # Initialize client here
     api_token = os.getenv("SHORTCUT_API_TOKEN")
