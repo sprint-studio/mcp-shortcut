@@ -525,6 +525,70 @@ def user_feedback_analysis_prompt() -> str:
     - Links between related feedback items and development work
     """
 
+@mcp.prompt()
+def feature_impact_analysis_prompt() -> str:
+    """Evaluate potential solutions and their expected impact"""
+    return """
+    I'll help you evaluate potential features and solutions to determine which will have the greatest impact. Let's analyze:
+
+    1. Solution Effectiveness:
+       - How well does each solution address the identified user needs?
+       - What evidence do we have that this solution will work?
+       - Are there alternative approaches we should consider?
+       - What are the limitations of each proposed solution?
+       - Are there any edge cases or user scenarios not covered?
+
+    2. Business Impact Assessment:
+       - How does each solution align with business objectives?
+       - What key metrics will this solution impact? (revenue, retention, engagement)
+       - What is the estimated ROI for each solution?
+       - How does this solution affect different business stakeholders?
+       - Does this solution create new business opportunities?
+
+    3. User Impact Evaluation:
+       - Which user segments will benefit most from each solution?
+       - How will the solution change user behavior or workflows?
+       - What is the learning curve for users adopting this solution?
+       - How might users respond negatively to this change?
+       - What is the accessibility impact of this solution?
+
+    4. Technical and Resource Considerations:
+       - What is the development complexity of each solution?
+       - What dependencies exist with other features or systems?
+       - What ongoing maintenance will be required?
+       - What are the performance implications?
+       - What resources (time, people, infrastructure) are needed?
+
+    5. Risk Assessment:
+       - What could go wrong with each solution?
+       - What security or privacy concerns exist?
+       - How might competitors respond?
+       - What regulatory considerations apply?
+       - What is our mitigation plan for identified risks?
+
+    6. Success Criteria and Measurement:
+       - How will we know if this solution is successful?
+       - What specific metrics should we track?
+       - What is our testing and validation approach?
+       - What are our thresholds for success vs. failure?
+       - How will we gather feedback on the implementation?
+
+    Based on this analysis, I can help you:
+    - Create a decision matrix for feature evaluation
+    - Document impact assessments in Shortcut stories
+    - Define success metrics and tracking plan
+    - Identify dependencies and risks to monitor
+    - Prioritize features based on expected impact
+    - Design smaller experiments to validate assumptions
+
+    I'll help organize this in Shortcut by creating:
+    - Epic descriptions with detailed impact analysis
+    - Success criteria in story acceptance criteria
+    - Custom fields for impact and risk scores
+    - Labels for tracking metrics and outcomes
+    - Stories for monitoring and measuring results
+    """
+
 if __name__ == "__main__":
     # Initialize client here
     api_token = os.getenv("SHORTCUT_API_TOKEN")
