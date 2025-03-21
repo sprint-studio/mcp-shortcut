@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-import os
-import json
+
 import logging
-from typing import Dict, List, Optional, Any, Union
-from datetime import datetime, timedelta
-import httpx
+import os
+from typing import Dict, List, Optional
+from dotenv import load_dotenv
+
+from client import ShortcutClient
 
 # Import MCP SDK
 from mcp.server.fastmcp import FastMCP
+
+load_dotenv()
 
 # Configure logging
 logging.basicConfig(
@@ -16,65 +19,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger("shortcut-pm-mcp")
 
-# Constants
-API_BASE_URL = "https://api.app.shortcut.com/api/v3"
-USER_AGENT = "Shortcut-PM-MCP/1.0"
-
 # Global client that will be initialized at startup
 client = None
-
-# Shortcut API client
-class ShortcutClient:
-    def __init__(self, api_token):
-        self.api_token = api_token
-        self.base_url = API_BASE_URL
-        self.headers = {
-            "Content-Type": "application/json",
-            "Shortcut-Token": api_token
-        }
-    
-    async def get(self, endpoint, params=None):
-        async with httpx.AsyncClient() as client:
-            response = await client.get(
-                f"{self.base_url}{endpoint}",
-                headers=self.headers,
-                params=params,
-                timeout=30.0
-            )
-            response.raise_for_status()
-            return response.json()
-    
-    async def post(self, endpoint, data):
-        async with httpx.AsyncClient() as client:
-            response = await client.post(
-                f"{self.base_url}{endpoint}",
-                headers=self.headers,
-                json=data,
-                timeout=30.0
-            )
-            response.raise_for_status()
-            return response.json()
-    
-    async def put(self, endpoint, data):
-        async with httpx.AsyncClient() as client:
-            response = await client.put(
-                f"{self.base_url}{endpoint}",
-                headers=self.headers,
-                json=data,
-                timeout=30.0
-            )
-            response.raise_for_status()
-            return response.json()
-    
-    async def delete(self, endpoint):
-        async with httpx.AsyncClient() as client:
-            response = await client.delete(
-                f"{self.base_url}{endpoint}",
-                headers=self.headers,
-                timeout=30.0
-            )
-            response.raise_for_status()
-            return response.status_code
 
 # Create an MCP server
 mcp = FastMCP("Shortcut Product Manager", 
@@ -482,13 +428,15 @@ def roadmap_planning_prompt() -> str:
 
 if __name__ == "__main__":
     # Initialize client here
-    api_token = '9a51ef24-2e77-4394-b3d6-a283e883a839'
+    api_token = os.getenv("SHORTCUT_API_TOKEN")
+    api_url = os.getenv("SHORTCUT_API_URL")
+    
     if not api_token:
         logger.error("SHORTCUT_API_TOKEN environment variable not set")
         raise ValueError("SHORTCUT_API_TOKEN environment variable not set")
     
     # Create global client that will be used by all handlers
-    client = ShortcutClient(api_token)
+    client = ShortcutClient(api_url, api_token)
     
     # Start the MCP server
     mcp.run()

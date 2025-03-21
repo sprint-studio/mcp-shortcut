@@ -49,7 +49,7 @@ The Shortcut Product Manager MCP enables AI assistants like Claude to perform co
 
 4. Run the server:
    ```bash
-   python server-v2.py
+   python server.py
    ```
 
 ### MCP CLI Integration
@@ -65,12 +65,12 @@ For enhanced functionality with the MCP CLI:
 2. Run in development mode to test with the MCP Inspector:
 
    ```bash
-   mcp dev server-v2.py
+   mcp dev server.py
    ```
 
 3. Install in Claude Desktop:
    ```bash
-   mcp install server-v2.py
+   mcp install server.py
    ```
 
 ## Product Management Features
