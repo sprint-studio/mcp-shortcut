@@ -428,7 +428,7 @@ def feature_impact_analysis_prompt() -> str:
     - Prioritize features based on expected impact
     - Design smaller experiments to validate assumptions
 
-    I'll help organize this in Shortcut by creating:
+    I'll help organize this in Shortcut by:
     - Epic descriptions with detailed impact analysis
     - Success criteria in story acceptance criteria
     - Custom fields for impact and risk scores
@@ -1294,6 +1294,273 @@ def dependency_mapping_prompt() -> str:
     - Setting up dashboard views filtered by dependency status
     - Creating labels for different dependency categories
     - Documenting dependency resolution criteria
+    """
+
+@mcp.prompt()
+def backlog_refinement_prompt() -> str:
+    """Organize and prioritize the backlog"""
+    return """
+    I'll help you organize, refine, and prioritize your product backlog to ensure it's well-structured and focused on delivering value. Let's work through:
+
+    1. Backlog Audit and Assessment:
+       - What is the current size and composition of your backlog?
+       - How old are the oldest items in your backlog?
+       - What percentage of the backlog has been estimated and refined?
+       - What categories or types of work exist in the backlog? (features, bugs, technical debt, etc.)
+       - Which items have dependencies or blockers?
+       - Are there duplicate or overlapping items that could be consolidated?
+       - What percentage of backlog items have clear acceptance criteria?
+
+    2. Backlog Organization Structure:
+       - How should the backlog be segmented? (by theme, product area, target user, time horizon)
+       - What hierarchy will you use? (epics > stories > tasks or themes > initiatives > features)
+       - What custom fields will help categorize and sort the backlog?
+       - What labeling system will make the backlog easily filterable?
+       - How will you distinguish between immediate, near-term, and long-term items?
+       - What information architecture will make navigation intuitive?
+       - How will you handle cross-cutting concerns? (security, performance, accessibility)
+
+    3. Item Quality and Readiness:
+       - What criteria define a "ready" backlog item?
+       - What level of detail is appropriate for different time horizons?
+       - How will you ensure items have clear, testable acceptance criteria?
+       - What supporting artifacts should accompany different item types?
+       - How will technical feasibility be validated?
+       - What format will you use for user stories? (As a..., I want..., So that...)
+       - How will you indicate design requirements or mockup needs?
+
+    4. Prioritization Framework:
+       - What prioritization method will you apply? (RICE, MoSCoW, Cost of Delay, etc.)
+       - What factors will influence priority? (business value, user impact, effort, risk)
+       - How will you balance new features vs. technical debt vs. bugs?
+       - How will you account for dependencies in prioritization?
+       - What stakeholders should have input into prioritization?
+       - How will you resolve prioritization conflicts?
+       - What cadence will you follow for re-evaluating priorities?
+
+    5. Backlog Grooming Process:
+       - Who should participate in backlog refinement sessions?
+       - What is the optimal frequency and duration for refinement meetings?
+       - How many items should be refined in each session?
+       - What preparation is required before refinement sessions?
+       - How will you structure the discussion in refinement meetings?
+       - What documentation will be updated during or after refinement?
+       - How far ahead should stories be refined?
+
+    6. Backlog Metrics and Health:
+       - How will you measure backlog health?
+       - What is a healthy ratio of refined to unrefined items?
+       - How will you track backlog growth vs. completion rate?
+       - What metrics will indicate prioritization effectiveness?
+       - How will you measure backlog item quality?
+       - What is your target cycle time from backlog to completion?
+       - How will you identify and manage backlog risk?
+
+    7. Backlog Management and Maintenance:
+       - What regular cleanup activities should be performed?
+       - When should items be archived or removed?
+       - How will you incorporate new insights and feedback?
+       - What approval process exists for adding new items?
+       - How will you communicate backlog changes to stakeholders?
+       - What tools or automation can assist with backlog management?
+       - Who is ultimately responsible for backlog health?
+
+    Based on this refinement, I can help you:
+    - Restructure your backlog for better usability
+    - Apply a consistent prioritization framework
+    - Design a backlog refinement workflow
+    - Develop definition of ready criteria
+    - Create templates for different item types
+    - Establish backlog health metrics
+    - Implement regular maintenance routines
+
+    I'll help organize this in Shortcut by:
+    - Setting up a logical hierarchy of epics and stories
+    - Creating custom fields for priority scores and readiness
+    - Establishing templates for well-formed stories
+    - Implementing a consistent labeling system
+    - Creating filtered views for different backlog segments
+    - Setting up dashboards to monitor backlog health
+    - Defining workflow states that reflect refinement status
+    - Creating prioritization labels with clear criteria
+    """
+
+@mcp.prompt()
+def team_workload_prompt() -> str:
+    """Analyze and balance team workloads"""
+    return """
+    I'll help you analyze and balance team workloads to optimize productivity and prevent burnout. Let's explore:
+
+    1. Current Workload Assessment:
+       - What teams or individuals do you want to analyze?
+       - What is each team member's current allocation? (assigned stories, points, tasks)
+       - What is each person's role and specialized skills?
+       - What is the distribution of work across different work types? (features, bugs, maintenance)
+       - Are there any team members with significantly higher or lower workloads?
+       - What is the timeline for the current work assignments?
+       - Are there any critical deadlines or time-sensitive tasks?
+
+    2. Capacity Planning:
+       - What is each team member's availability? (accounting for time off, meetings, support rotations)
+       - What is your team's velocity or throughput rate?
+       - How does capacity vary across team members based on experience and role?
+       - What is the total capacity across the team for the upcoming period?
+       - What buffer should be maintained for unexpected work?
+       - How do you account for non-development work? (planning, reviews, interviews)
+       - What is the team's current utilization rate?
+
+    3. Workload Optimization:
+       - What skills are required for upcoming work items?
+       - How can work be distributed to balance expertise and learning opportunities?
+       - Which team members have bandwidth to take on additional work?
+       - What work should be reassigned to create better balance?
+       - How can you minimize context switching for team members?
+       - What work can be delegated, delayed, or declined?
+       - How can similar tasks be batched for efficiency?
+
+    4. Identifying Bottlenecks and Risks:
+       - Are there key individuals who are overallocated?
+       - What specialized knowledge or skills are concentrated in specific people?
+       - What dependencies exist between team members?
+       - Which critical path items have the most risk due to workload issues?
+       - What contingency plans exist for key person risks?
+       - What work items have unclear ownership or responsibility?
+       - Where might quality suffer due to excessive workloads?
+
+    5. Team Collaboration Model:
+       - How is work typically assigned to team members?
+       - What pairing or collaboration practices could distribute knowledge?
+       - What opportunities exist for mentoring and knowledge transfer?
+       - How can you create effective cross-functional teams for specific initiatives?
+       - What decision-making authority do team members have about their workloads?
+       - How do you handle requests that come directly to individual team members?
+       - What communication channels exist for workload concerns?
+
+    6. Workload Monitoring and Adjustment:
+       - How frequently will you review workload distribution?
+       - What signals indicate someone is overloaded? (missed deadlines, quality issues, stress)
+       - What process exists for team members to request help?
+       - How will you track ongoing work vs. capacity?
+       - What metrics will help identify imbalances? (WIP limits, cycle time variations)
+       - How will you determine if rebalancing efforts are successful?
+       - What feedback loops exist to continuously improve workload management?
+
+    7. Sustainable Pace and Well-being:
+       - How will you ensure team members can maintain a sustainable pace?
+       - What practices help prevent burnout?
+       - How do you account for varying energy levels throughout the day/week?
+       - What flexibility exists for when and how work gets done?
+       - How do you recognize signs of overwork or decreased engagement?
+       - What support resources are available for team members?
+       - How do you balance short-term productivity with long-term sustainability?
+
+    Based on this analysis, I can help you:
+    - Create a balanced workload distribution plan
+    - Identify critical bottlenecks and risks
+    - Develop strategies for knowledge sharing
+    - Establish sustainable capacity planning
+    - Set up appropriate workload monitoring
+    - Design team processes that prevent overallocation
+    - Create contingency plans for key person dependencies
+
+    I'll help organize this in Shortcut by:
+    - Setting up custom fields to track individual capacity
+    - Creating dashboards to visualize team workloads
+    - Establishing labels for work complexity and effort
+    - Developing ownership and pairing documentation
+    - Setting up milestone planning aligned with capacity
+    - Creating story templates that capture required skills
+    - Implementing workflows that reflect balanced assignments
+    - Setting up work-in-progress limits in workflow states
+    """
+
+@mcp.prompt()
+def ticket_triage_prompt() -> str:
+    """Prioritize and categorize incoming work"""
+    return """
+    I'll help you establish an effective system for triaging, prioritizing, and categorizing incoming work. Let's explore:
+
+    1. Ticket Information Assessment:
+       - What types of work items need triage? (bugs, feature requests, support issues, technical debt)
+       - What information should be captured for each incoming ticket?
+       - What mandatory fields are required before triage can begin?
+       - What sources generate these work items? (customer support, internal teams, monitoring)
+       - How do tickets currently arrive in your system?
+       - What volume of tickets do you typically process?
+       - What information is often missing from incoming tickets?
+
+    2. Severity and Impact Classification:
+       - How do you define different severity levels? (critical, high, medium, low)
+       - What business impact criteria determine severity? (revenue, customers affected, brand)
+       - What technical impact criteria affect severity? (performance, security, availability)
+       - How do you measure customer impact? (number affected, journey stage, workarounds)
+       - What time sensitivity factors influence urgency?
+       - How will you handle conflicting severity indicators?
+       - What escalation paths exist for critical issues?
+
+    3. Categorization Framework:
+       - What primary categories will you use to classify work? (component, team, work type)
+       - What subcategories help with routing and reporting?
+       - How will you label different root causes for similar issues?
+       - What system areas or domains should be identified?
+       - How will you track recurring issues vs. one-off problems?
+       - What user segments or customer tiers should be noted?
+       - How will you distinguish between symptoms and root causes?
+
+    4. Triage Process Definition:
+       - Who should participate in the triage process?
+       - What roles and responsibilities exist during triage?
+       - How frequently should triage sessions occur?
+       - What is the workflow for triaging a typical ticket?
+       - What items can be auto-triaged vs. requiring manual review?
+       - What SLAs should exist for initial triage response?
+       - How will items be routed to the right teams after triage?
+
+    5. Prioritization Methodology:
+       - What prioritization framework will you use? (value vs. effort, risk-based, cost of delay)
+       - What factors influence priority beyond severity? (strategic alignment, dependencies)
+       - How will you balance customer requests vs. internal needs?
+       - What weighting will you give to different priority factors?
+       - How will you resolve competing priorities?
+       - What authority exists to override standard prioritization?
+       - How frequently will prioritization be reassessed?
+
+    6. Response and Resolution Planning:
+       - What workflows exist for different ticket types?
+       - What initial response templates should be created?
+       - How will expected resolution times be determined?
+       - What fast-track options exist for critical issues?
+       - How will you batch similar tickets for efficiency?
+       - What follow-up and communication cadence is appropriate?
+       - How will you track ticket resolution progress?
+
+    7. Analysis and Continuous Improvement:
+       - What metrics will you track about the triage process?
+       - How will you identify trends and recurring issues?
+       - What feedback mechanisms exist to improve the triage system?
+       - How will you measure triage accuracy and effectiveness?
+       - What reporting will help identify process improvements?
+       - How will you capture knowledge for future reference?
+       - What regular reviews should occur to update triage criteria?
+
+    Based on this framework, I can help you:
+    - Create a structured triage workflow
+    - Develop severity and priority classification systems
+    - Design ticket templates with required information
+    - Establish routing rules for different work types
+    - Set up appropriate SLAs and response timeframes
+    - Create triage team roles and responsibilities
+    - Develop trend analysis and reporting mechanisms
+
+    I'll help organize this in Shortcut by:
+    - Setting up custom fields for ticket classification and severity
+    - Creating templates for different ticket types
+    - Establishing workflow states that reflect the triage process
+    - Implementing labels for categorization and tracking
+    - Setting up dashboards for triage visibility and metrics
+    - Creating team views for assigned work post-triage
+    - Defining iteration planning guidelines based on prioritized work
+    - Documenting triage protocols in shared epics or documents
     """
 
 if __name__ == "__main__":
