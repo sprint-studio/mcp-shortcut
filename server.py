@@ -1563,6 +1563,184 @@ def ticket_triage_prompt() -> str:
     - Documenting triage protocols in shared epics or documents
     """
 
+@mcp.prompt()
+def bug_report_prompt() -> str:
+    """Create detailed bug reports"""
+    return """
+    I'll help you create detailed, actionable bug reports that provide all the necessary information for efficient resolution. Let's explore:
+
+    1. Bug Identification and Summary:
+       - What is the concise description of the bug?
+       - When was the bug first observed?
+       - How consistently can the bug be reproduced?
+       - Who reported the bug initially?
+       - What version of the product/software contains the bug?
+       - On which environments does the bug occur? (production, staging, development)
+       - Which devices, browsers, or platforms are affected?
+
+    2. Reproduction Steps:
+       - What are the exact steps to reproduce the bug?
+       - What specific data or inputs trigger the bug?
+       - Are there multiple paths to encounter the same bug?
+       - What user permissions or settings are required to see the bug?
+       - Are there any timing or sequence dependencies?
+       - What preconditions must exist before the bug occurs?
+       - Can the bug be reproduced in a clean/isolated environment?
+
+    3. Expected vs. Actual Behavior:
+       - What behavior should occur when everything works correctly?
+       - What actually happens when the bug occurs?
+       - How does the observed behavior differ from requirements or specifications?
+       - Are there any error messages or logs generated?
+       - What visual indications appear when the bug occurs?
+       - Is there any surprising or unexpected system behavior?
+       - How does the bug impact workflows or user journeys?
+
+    4. Impact Assessment:
+       - How many users are affected by this bug?
+       - What user segments or personas experience this issue?
+       - How does this bug impact the business? (revenue, conversion, retention)
+       - What workarounds exist for affected users?
+       - Is this bug blocking critical user journeys?
+       - Is there potential for data loss or security concerns?
+       - Is the impact growing over time?
+
+    5. Diagnostic Information:
+       - What logs or error messages are associated with the bug?
+       - What screenshots or screen recordings demonstrate the issue?
+       - What network requests or API calls are involved?
+       - What relevant system state exists when the bug occurs?
+       - What browser console errors appear?
+       - What performance metrics are relevant to the issue?
+       - What user account or test data can be used to verify the bug?
+
+    6. Context and Related Issues:
+       - What product area or component contains this bug?
+       - Are there related bugs or issues in the system?
+       - Has this bug been reported previously?
+       - When did the bug first appear? (after what release or change)
+       - Has the behavior changed over time?
+       - What recent changes might have introduced this bug?
+       - Are there any third-party dependencies involved?
+
+    7. Severity and Resolution Guidance:
+       - How would you rate the bug's severity? (critical, high, medium, low)
+       - What is the justification for this severity rating?
+       - What is the suggested priority for fixing this bug?
+       - Are there any specific hypotheses about the cause?
+       - What technical areas should be investigated?
+       - What stakeholders should be informed about this bug?
+       - What timeline is expected for resolution?
+
+    Based on this framework, I can help you:
+    - Create comprehensive bug reports with all necessary details
+    - Prioritize bugs based on clear impact assessment
+    - Provide clear reproduction steps for developers
+    - Document diagnostic information for faster resolution
+    - Track related issues and potential root causes
+    - Establish severity classifications based on objective criteria
+    - Create templates for different types of bug reports
+
+    I'll help organize this in Shortcut by:
+    - Creating well-structured bug stories with all required fields
+    - Setting up custom fields for environment, severity, and impact
+    - Establishing templates for common bug types
+    - Adding checklists for reproduction verification
+    - Creating labels for tracking affected components
+    - Setting up workflows that reflect bug lifecycle stages
+    - Linking related bugs to identify patterns
+    - Setting up dashboards for bug tracking and resolution progress
+    """
+
+@mcp.prompt()
+def stakeholder_update_prompt() -> str:
+    """Create tailored stakeholder communications"""
+    return """
+    I'll help you create effective, tailored stakeholder communications that convey the right information to the right audience in the right format. Let's explore:
+
+    1. Stakeholder Identification and Mapping:
+       - Who are the key stakeholders that need updates about your product work?
+       - What are the different stakeholder groups? (executives, customers, team members, partners)
+       - What is each stakeholder's level of influence and interest in the product?
+       - What is each stakeholder's communication preference? (level of detail, format, frequency)
+       - What is each stakeholder's primary area of concern or interest?
+       - What is the current relationship status with each stakeholder?
+       - How technically savvy is each stakeholder group?
+
+    2. Communication Purpose and Objectives:
+       - What is the primary purpose of this communication? (inform, get approval, address concerns)
+       - What specific outcomes do you want from this communication?
+       - What decisions or actions should result from this update?
+       - What questions do you need to answer for stakeholders?
+       - What concerns or objections do you need to address?
+       - What level of engagement do you need from each stakeholder?
+       - What should stakeholders remember after reading/hearing your communication?
+
+    3. Content Selection and Tailoring:
+       - What information is most relevant to each stakeholder group?
+       - What level of detail is appropriate for different stakeholders?
+       - What business metrics or KPIs matter most to each group?
+       - What technical details should be included or omitted?
+       - What visual elements would enhance understanding? (dashboards, charts, mockups)
+       - What product outcomes should be highlighted?
+       - What risks or challenges should be transparently shared?
+
+    4. Progress and Achievement Reporting:
+       - What key accomplishments should be highlighted since the last update?
+       - How does current progress compare to the planned timeline?
+       - What milestones have been reached or are upcoming?
+       - What customer/user value has been delivered?
+       - What metrics show the impact of recent work?
+       - What unexpected wins should be celebrated?
+       - What early indicators of success can be shared?
+
+    5. Challenge and Risk Communication:
+       - What current challenges or blockers should be communicated?
+       - How should risks be framed constructively?
+       - What mitigation plans are in place for identified risks?
+       - What help or decisions are needed from stakeholders?
+       - How can issues be presented without causing unnecessary alarm?
+       - What context helps explain delays or changes in direction?
+       - What level of transparency is appropriate about problems?
+
+    6. Format and Delivery Method:
+       - What communication format is most effective for each stakeholder? (presentation, report, email, meeting)
+       - What cadence or frequency is appropriate for different stakeholders?
+       - How formal or informal should the communication be?
+       - What visual elements or data visualizations should be included?
+       - Should the communication be synchronous or asynchronous?
+       - Who should deliver the communication?
+       - What supporting materials should accompany the primary communication?
+
+    7. Feedback and Follow-up Planning:
+       - How will you collect and incorporate stakeholder feedback?
+       - What action items should result from this communication?
+       - When will the next update occur?
+       - What follow-up questions should you anticipate?
+       - How will you track commitments made during this communication?
+       - What mechanisms exist for ongoing stakeholder engagement?
+       - How will you measure the effectiveness of your communication?
+
+    Based on this assessment, I can help you:
+    - Create tailored communication plans for different stakeholder groups
+    - Draft specific updates that address each stakeholder's primary concerns
+    - Structure content in the most effective format for each audience
+    - Balance transparency with appropriate level of detail
+    - Develop compelling visualizations of progress and impact
+    - Prepare for potential questions or objections
+    - Establish regular communication rhythms
+
+    I'll help organize this in Shortcut by:
+    - Creating templates for different stakeholder communications
+    - Setting up epics for tracking stakeholder engagement
+    - Establishing custom fields for communication preferences
+    - Creating labels for tracking communication frequency
+    - Documenting stakeholder information and concerns
+    - Setting up recurring stories for regular updates
+    - Creating dashboards tailored to specific stakeholder interests
+    - Developing a central repository for communication artifacts
+    """
+
 if __name__ == "__main__":
     # Initialize client here
     api_token = os.getenv("SHORTCUT_API_TOKEN")
