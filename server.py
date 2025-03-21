@@ -373,32 +373,158 @@ def sprint_planning_prompt() -> str:
     """
 
 @mcp.prompt()
+def feature_impact_analysis_prompt() -> str:
+    """Evaluate potential solutions and their expected impact"""
+    return """
+    I'll help you evaluate potential features and solutions to determine which will have the greatest impact. Let's analyze:
+
+    1. Solution Effectiveness:
+       - How well does each solution address the identified user needs?
+       - What evidence do we have that this solution will work?
+       - Are there alternative approaches we should consider?
+       - What are the limitations of each proposed solution?
+       - Are there any edge cases or user scenarios not covered?
+
+    2. Business Impact Assessment:
+       - How does each solution align with business objectives?
+       - What key metrics will this solution impact? (revenue, retention, engagement)
+       - What is the estimated ROI for each solution?
+       - How does this solution affect different business stakeholders?
+       - Does this solution create new business opportunities?
+
+    3. User Impact Evaluation:
+       - Which user segments will benefit most from each solution?
+       - How will the solution change user behavior or workflows?
+       - What is the learning curve for users adopting this solution?
+       - How might users respond negatively to this change?
+       - What is the accessibility impact of this solution?
+
+    4. Technical and Resource Considerations:
+       - What is the development complexity of each solution?
+       - What dependencies exist with other features or systems?
+       - What ongoing maintenance will be required?
+       - What are the performance implications?
+       - What resources (time, people, infrastructure) are needed?
+
+    5. Risk Assessment:
+       - What could go wrong with each solution?
+       - What security or privacy concerns exist?
+       - How might competitors respond?
+       - What regulatory considerations apply?
+       - What is our mitigation plan for identified risks?
+
+    6. Success Criteria and Measurement:
+       - How will we know if this solution is successful?
+       - What specific metrics should we track?
+       - What is our testing and validation approach?
+       - What are our thresholds for success vs. failure?
+       - How will we gather feedback on the implementation?
+
+    Based on this analysis, I can help you:
+    - Create a decision matrix for feature evaluation
+    - Document impact assessments in Shortcut stories
+    - Define success metrics and tracking plan
+    - Identify dependencies and risks to monitor
+    - Prioritize features based on expected impact
+    - Design smaller experiments to validate assumptions
+
+    I'll help organize this in Shortcut by creating:
+    - Epic descriptions with detailed impact analysis
+    - Success criteria in story acceptance criteria
+    - Custom fields for impact and risk scores
+    - Labels for tracking metrics and outcomes
+    - Stories for monitoring and measuring results
+    """
+
+@mcp.prompt()
 def feature_specification_prompt() -> str:
     """Write detailed feature specifications"""
     return """
-    I'll help you write a detailed feature specification for Shortcut. Please provide:
-    
-    1. What is the name of the feature?
-    2. What problem does this feature solve? Who is it for?
-    3. What are the high-level requirements?
-    4. Are there any design mockups or references?
-    5. Are there technical constraints or requirements to consider?
-    6. How does this feature tie into your overall product strategy?
-    
-    I'll help you create a comprehensive specification that includes:
-    - Feature overview and business justification
-    - Success metrics: how will we know if this feature is successful?
-    - User stories or job stories
-    - Detailed functional requirements
-    - Non-functional requirements (performance, security, etc.)
-    - User experience flow with key screens and interactions
-    - Technical implementation guidelines
-    - Acceptance criteria for each component
-    - Testing requirements and edge cases
-    - Rollout and launch considerations
-    - Future enhancements or iterations to consider
-    
-    Once we have this specification, I'll create an epic in Shortcut with appropriately linked stories.
+    I'll help you create a comprehensive feature specification document. Let's cover all the essential aspects:
+
+    1. Feature Overview:
+       - What is the name and brief description of the feature?
+       - What is the primary purpose and value proposition?
+       - Who are the target users or personas?
+       - How does this feature align with product strategy and goals?
+       - What is the expected business impact?
+
+    2. Problem Statement and User Needs:
+       - What specific user problems or needs does this feature address?
+       - What use cases or scenarios will this feature support?
+       - What jobs-to-be-done is the user trying to accomplish?
+       - What evidence do we have about these needs? (user research, feedback, data)
+       - How critical is this problem for our users?
+
+    3. Success Metrics:
+       - How will we measure the success of this feature?
+       - What specific KPIs or metrics will be impacted?
+       - What are our targets or thresholds for these metrics?
+       - How will we collect the necessary data?
+       - When will we evaluate performance?
+
+    4. Functional Requirements:
+       - What are the core capabilities the feature must provide?
+       - What actions can users take with this feature?
+       - What are the required inputs and expected outputs?
+       - What are the different states or modes of the feature?
+       - What validation rules or constraints apply?
+
+    5. User Experience and Design:
+       - What is the user flow or journey for this feature?
+       - What are the key screens, components, or interactions?
+       - How will the feature handle edge cases and errors?
+       - What accessibility requirements must be met?
+       - How will this feature integrate with existing UI patterns?
+
+    6. Technical Requirements:
+       - What backend systems or APIs will be affected?
+       - What data structures or models are needed?
+       - What performance requirements must be met?
+       - What security or privacy considerations exist?
+       - How will the feature scale with increased usage?
+
+    7. Dependencies and Constraints:
+       - What other features or systems does this depend on?
+       - What technical limitations might affect implementation?
+       - Are there any third-party integrations required?
+       - What are the regulatory or compliance requirements?
+       - What resource constraints must be considered?
+
+    8. Implementation Plan:
+       - What is the proposed implementation approach?
+       - Can this be broken down into smaller increments?
+       - What is the estimated level of effort?
+       - What are the key milestones or phases?
+       - What resources (people, tools, etc.) are needed?
+
+    9. Testing Requirements:
+       - What test cases should be covered?
+       - What edge cases or error conditions need testing?
+       - What performance or load testing is needed?
+       - What user acceptance testing is required?
+       - How will we gather feedback during testing?
+
+    10. Rollout Strategy:
+       - Will this be released gradually or all at once?
+       - Is feature flagging or A/B testing needed?
+       - What user communications are required?
+       - What training or documentation is needed?
+       - What monitoring will be in place during rollout?
+
+    Based on this specification, I can help you:
+    - Create a well-structured epic in Shortcut
+    - Break down the work into individual stories
+    - Define clear acceptance criteria for each story
+    - Document technical requirements and dependencies
+    - Create a trackable implementation plan
+
+    I'll help organize this in Shortcut by creating:
+    - A detailed epic with the complete specification
+    - Individual stories for each component or requirement
+    - Labels for tracking progress and components
+    - Custom fields for priorities and dependencies
+    - Attachments or links to relevant designs or research
     """
 
 @mcp.prompt()
@@ -526,67 +652,227 @@ def user_feedback_analysis_prompt() -> str:
     """
 
 @mcp.prompt()
-def feature_impact_analysis_prompt() -> str:
-    """Evaluate potential solutions and their expected impact"""
+def acceptance_criteria_prompt() -> str:
+    """Break down work into stories and set clear acceptance criteria"""
     return """
-    I'll help you evaluate potential features and solutions to determine which will have the greatest impact. Let's analyze:
+    I'll help you break down work into well-defined stories with clear acceptance criteria. Let's work through:
 
-    1. Solution Effectiveness:
-       - How well does each solution address the identified user needs?
-       - What evidence do we have that this solution will work?
-       - Are there alternative approaches we should consider?
-       - What are the limitations of each proposed solution?
-       - Are there any edge cases or user scenarios not covered?
+    1. Epic or Feature Breakdown:
+       - What is the overall feature or epic we're breaking down?
+       - What are the key user workflows or journeys involved?
+       - What are the logical components or modules of this feature?
+       - Are there distinct phases of implementation to consider?
+       - What dependencies exist between different components?
 
-    2. Business Impact Assessment:
-       - How does each solution align with business objectives?
-       - What key metrics will this solution impact? (revenue, retention, engagement)
-       - What is the estimated ROI for each solution?
-       - How does this solution affect different business stakeholders?
-       - Does this solution create new business opportunities?
+    2. Story Creation Framework:
+       - Who is the user or stakeholder for each story?
+       - What specific action or capability does each story enable?
+       - What is the business value or user benefit for each story?
+       - How can we slice stories to be small but valuable?
+       - Are these stories independent enough to be worked on separately?
+       - Can each story be completed within a single iteration?
 
-    3. User Impact Evaluation:
-       - Which user segments will benefit most from each solution?
-       - How will the solution change user behavior or workflows?
-       - What is the learning curve for users adopting this solution?
-       - How might users respond negatively to this change?
-       - What is the accessibility impact of this solution?
+    3. Acceptance Criteria Structure:
+       - What format works best for your team? (Given-When-Then, checklist, etc.)
+       - What specific behaviors must be implemented?
+       - What edge cases or error conditions need handling?
+       - What performance or non-functional requirements apply?
+       - What existing patterns or standards need to be followed?
+       - What specific inputs and outputs should be validated?
 
-    4. Technical and Resource Considerations:
-       - What is the development complexity of each solution?
-       - What dependencies exist with other features or systems?
-       - What ongoing maintenance will be required?
-       - What are the performance implications?
-       - What resources (time, people, infrastructure) are needed?
+    4. Testability Considerations:
+       - How will each criteria be verified?
+       - Are automated tests possible for these criteria?
+       - What manual testing scenarios are required?
+       - What test data or environments are needed?
+       - Are there specific states or conditions to test?
 
-    5. Risk Assessment:
-       - What could go wrong with each solution?
-       - What security or privacy concerns exist?
-       - How might competitors respond?
-       - What regulatory considerations apply?
-       - What is our mitigation plan for identified risks?
+    5. Definition of Done Elements:
+       - What quality standards must be met?
+       - What documentation is required?
+       - What accessibility requirements apply?
+       - What security checks are needed?
+       - What performance thresholds must be achieved?
+       - What approvals or sign-offs are required?
 
-    6. Success Criteria and Measurement:
-       - How will we know if this solution is successful?
-       - What specific metrics should we track?
-       - What is our testing and validation approach?
-       - What are our thresholds for success vs. failure?
-       - How will we gather feedback on the implementation?
+    6. Story Relationships and Sequence:
+       - What is the optimal order for implementing these stories?
+       - Which stories have technical dependencies on others?
+       - Are there stories that can be developed in parallel?
+       - Which stories should be prioritized for early feedback?
+       - Are there stories that carry higher risk and should be addressed early?
 
-    Based on this analysis, I can help you:
-    - Create a decision matrix for feature evaluation
-    - Document impact assessments in Shortcut stories
-    - Define success metrics and tracking plan
-    - Identify dependencies and risks to monitor
-    - Prioritize features based on expected impact
-    - Design smaller experiments to validate assumptions
+    Based on this breakdown, I can help you:
+    - Create right-sized stories in Shortcut with clear titles and descriptions
+    - Draft comprehensive acceptance criteria for each story
+    - Set appropriate estimates and priorities
+    - Identify and document dependencies between stories
+    - Create a logical implementation sequence
+    - Define shared Definition of Done criteria across stories
 
-    I'll help organize this in Shortcut by creating:
-    - Epic descriptions with detailed impact analysis
-    - Success criteria in story acceptance criteria
-    - Custom fields for impact and risk scores
-    - Labels for tracking metrics and outcomes
-    - Stories for monitoring and measuring results
+    I'll help organize this in Shortcut by:
+    - Creating well-structured stories under the parent epic
+    - Adding clear acceptance criteria to each story description
+    - Setting up story relationships and dependencies
+    - Adding appropriate labels for tracking
+    - Establishing workflow states based on implementation sequence
+    - Documenting technical requirements and constraints
+    """
+
+@mcp.prompt()
+def status_update_prompt() -> str:
+    """Generate comprehensive status updates and track progress"""
+    return """
+    I'll help you create detailed status updates and track progress on your projects in Shortcut. Let's gather information about:
+
+    1. Scope Definition:
+       - Which specific epic, milestone, iteration, or set of stories do you want to report on?
+       - What time period are you covering in this status update? (sprint, week, month)
+       - Which teams or individuals are involved in this work?
+       - Who are the stakeholders for this status update?
+       - What level of detail is appropriate for your audience?
+
+    2. Progress Assessment:
+       - What stories have been completed since the last update?
+       - What stories are currently in progress and what is their status?
+       - What is the overall completion percentage for the epic/milestone?
+       - How does the current progress compare to the original plan or timeline?
+       - Are there any completed items awaiting verification or deployment?
+       - What metrics or KPIs are available to quantify progress?
+
+    3. Blockers and Challenges:
+       - What current blockers or impediments exist?
+       - How long have these blockers been in place?
+       - What steps are being taken to resolve each blocker?
+       - Are there any resource constraints affecting progress?
+       - What dependencies on other teams or systems are impacting work?
+       - Are there any quality or technical issues that have emerged?
+
+    4. Risk Analysis:
+       - What new risks have been identified since the last update?
+       - Have any previously identified risks materialized?
+       - Have risk mitigation strategies been effective?
+       - Are there timeline, scope, or quality risks on the horizon?
+       - Has the priority of any risks changed?
+       - What contingency plans should be considered?
+
+    5. Timeline and Forecast:
+       - Is the work still on track to meet the expected completion date?
+       - What is the revised forecast if the timeline has changed?
+       - What factors are influencing any timeline changes?
+       - Are there any upcoming milestones or deadlines to highlight?
+       - What is the team's velocity and how is it trending?
+       - What is the confidence level in meeting upcoming deadlines?
+
+    6. Accomplishments and Wins:
+       - What key accomplishments should be highlighted?
+       - What value has been delivered to users/customers?
+       - Are there any efficiency or process improvements to note?
+       - Have any significant technical challenges been overcome?
+       - Are there any positive metrics or feedback to share?
+       - What team or individual contributions deserve recognition?
+
+    7. Next Steps:
+       - What are the priorities for the next period?
+       - What specific stories will be tackled next?
+       - What decisions or input is needed from stakeholders?
+       - What upcoming meetings or reviews are scheduled?
+       - What dependencies need to be coordinated?
+       - What preparation work is needed for upcoming phases?
+
+    Based on this information, I can help you:
+    - Draft a comprehensive status update with appropriate detail level
+    - Create visual progress indicators for dashboards
+    - Update story statuses and comments in Shortcut
+    - Document and assign action items for blockers
+    - Adjust timeline forecasts based on current progress
+    - Prepare briefing materials for different stakeholder groups
+
+    I'll help organize this in Shortcut by:
+    - Adding status comments to epics, milestones, or iterations
+    - Updating workflow states to reflect current status
+    - Creating or updating blockers with action plans
+    - Tagging relevant stakeholders on important updates
+    - Generating summary reports for overall health assessment
+    - Creating or updating timeline indicators
+    """
+
+@mcp.prompt()
+def retrospective_prompt() -> str:
+    """Facilitate retrospectives to review outcomes and capture learnings"""
+    return """
+    I'll help you conduct an effective retrospective to review outcomes and capture valuable learnings. Let's explore:
+
+    1. Scope and Context:
+       - What specific work are we reviewing? (sprint, project, feature, milestone)
+       - What timeframe are we examining?
+       - Which teams or individuals contributed to this work?
+       - What were the original goals, requirements, and success criteria?
+       - What metrics or outcomes were we targeting?
+
+    2. Accomplishments Review:
+       - What did we successfully deliver?
+       - How do the deliverables compare to the original requirements?
+       - What metrics or KPIs show our impact?
+       - What customer or user feedback have we received?
+       - What technical achievements should we highlight?
+       - What challenges did we overcome?
+
+    3. Process Evaluation:
+       - How effectively did we follow our planned process?
+       - Were our estimations and timelines accurate?
+       - How was our velocity compared to expectations?
+       - How effective was our collaboration and communication?
+       - Did we have the right skills and resources available?
+       - How well did our tools and infrastructure support our needs?
+
+    4. What Went Well:
+       - Which practices or approaches proved particularly effective?
+       - Where did we exceed expectations?
+       - What positive team dynamics emerged?
+       - What decisions turned out to be good ones?
+       - What should we continue doing in future work?
+       - What strengths did team members demonstrate?
+
+    5. Challenges and Obstacles:
+       - What difficulties or roadblocks did we encounter?
+       - What caused delays or quality issues?
+       - Where did we have communication breakdowns?
+       - What technical debts were created or encountered?
+       - What assumptions proved incorrect?
+       - What external factors impacted our work negatively?
+
+    6. Learning and Insights:
+       - What have we learned about our users or customers?
+       - What have we learned about our product?
+       - What have we learned about our technical approach?
+       - What have we learned about our team and how we work?
+       - What have we learned about our planning and estimation?
+       - What surprised us during this work?
+
+    7. Actions and Improvements:
+       - What specific changes should we make going forward?
+       - What experiments should we try in our next iteration?
+       - What processes need refinement?
+       - What skills or knowledge gaps should we address?
+       - What tools or automation could help us improve?
+       - How should we adjust our planning or estimation?
+
+    Based on this retrospective, I can help you:
+    - Document key learnings and insights
+    - Create actionable improvement items
+    - Update team working agreements or best practices
+    - Adapt estimation or planning methods for future work
+    - Identify skills development needs
+    - Recognize and celebrate team achievements
+
+    I'll help organize this in Shortcut by:
+    - Creating stories for action items with clear ownership
+    - Documenting learnings in epics or milestone descriptions
+    - Adding notes to relevant stories about process improvements
+    - Creating labels for tracking recurring issues
+    - Setting up metrics to monitor improvements over time
+    - Establishing reminders to check on improvement progress
     """
 
 if __name__ == "__main__":
