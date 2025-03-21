@@ -475,6 +475,56 @@ def market_research_prompt() -> str:
     - Milestones for market opportunity initiatives
     """
 
+@mcp.prompt()
+def user_feedback_analysis_prompt() -> str:
+    """Analyze user feedback to identify needs and prioritize features"""
+    return """
+    I'll help you analyze user feedback to identify key needs and prioritize your product backlog. Let's start by identifying:
+
+    1. Feedback Sources:
+       - What sources of user feedback do you have? (surveys, support tickets, reviews, user interviews, usage data)
+       - How recent is this feedback?
+       - Which user segments or personas does the feedback represent?
+       - Are there any biases in your feedback collection methods?
+
+    2. Feedback Analysis:
+       - What are the most common pain points mentioned?
+       - What feature requests appear most frequently?
+       - What patterns emerge across different feedback channels?
+       - What is the emotional tone of the feedback? (frustrated, satisfied, confused)
+       - Which areas of your product receive the most positive/negative feedback?
+
+    3. User Needs Identification:
+       - What underlying needs do these feedback points reveal?
+       - Are users asking for specific solutions or expressing problems?
+       - What jobs-to-be-done are users struggling with?
+       - Are there unstated needs that emerge from analyzing usage patterns?
+       - What contextual factors affect user needs? (industry, company size, role)
+
+    4. Prioritization Framework:
+       - How does this feedback align with your product strategy?
+       - Which needs impact the largest number of users?
+       - Which needs represent the most critical user journeys?
+       - What is the potential business impact of addressing each need?
+       - How technically feasible is it to address each need?
+       - What is the opportunity cost of not addressing certain needs?
+
+    Based on this analysis, I can help you:
+    - Categorize feedback into actionable themes
+    - Create user stories that address underlying needs
+    - Assign priority levels to backlog items
+    - Design validation experiments for proposed solutions
+    - Map user needs to your product roadmap
+    - Set up metrics to measure improvement in problem areas
+
+    I'll help organize this in Shortcut by creating:
+    - Epics for major user need themes
+    - Stories for specific feedback-driven improvements
+    - Labels to track feedback sources and sentiment
+    - Custom fields for priority levels and impact metrics
+    - Links between related feedback items and development work
+    """
+
 if __name__ == "__main__":
     # Initialize client here
     api_token = os.getenv("SHORTCUT_API_TOKEN")
